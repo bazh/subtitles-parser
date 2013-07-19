@@ -1,0 +1,28 @@
+{
+    "name": "subtitle-parser",
+    "description": "NodeJS Parser for SubRip subtitles",
+    "version": "0.0.1",
+    "author": "bazh <interesno@gmail.com>",
+    "license": "MIT",
+    "keywords": [
+        "subtitles",
+        "subtitle",
+        "srt",
+        "subrip",
+        "subtitles parser",
+        "subtitle parser"
+    ],
+    "homepage": "https://github.com/bazh/subtitles-parser",
+    "bugs": "https://github.com/bazh/subtitles-parser/issues",
+    "repository": { "type": "git", "url": "https://github.com/bazh/subtitles-parser" },
+    "main": "index.js",
+    "devDependencies": { "should": "*" },
+    "engines": { "node": "*" },
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "mocha",
+        "make": "uglifyjs -cmo subtitles.parser.min.js index.js"
+    }
+}
