@@ -73,4 +73,4 @@ then it will convert startTime and endTime properties into millisecods:
     }]
 
 
-`parser.toStr(data)` or parser.toStr(dataMs) will convert object back to SubRip subtitles format.
+`parser.toSrt()` will convert object back to SubRip subtitles format.

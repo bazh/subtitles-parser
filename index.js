@@ -44,7 +44,7 @@ var parser = (function() {
         if (!data instanceof Array) return '';
         var res = '';
 
-        for (var i in data) {
+        for (var i = 0; i < data.length; i++) {
             var s = data[i];
 
             if (!isNaN(s.startTime) && !isNaN(s.endTime)) {
