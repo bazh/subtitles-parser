@@ -60,6 +60,38 @@ var parser = (function() {
         return res;
     };
 
+    /**
+     * Converts Array of subtitle objects to WebVTT subtitles
+     * @param {Array} data
+     * @returns {string} WebVTT subtitles
+     */
+    pItems.toWebVTT = function(data) {
+        if (!data instanceof Array) return '';
+        var res = 'WEBVTT\n\n',
+            s,
+            start,
+            end;
+
+        for (var i = 0; i < data.length; i++) {
+            var s = data[i];
+
+            if (!isNaN(s.startTime) && !isNaN(s.endTime)) {
+                start = msTime(parseInt(s.startTime, 10), true);
+                end = msTime(parseInt(s.endTime, 10), true);
+            }
+            else {
+                start = s.startTime.replace(',', '.');
+                end = s.endTime.replace(',', '.');
+            }
+
+            res += s.id + '\n';
+            res += start + ' --> ' + end + '\n';
+            res += s.text + '\n\n';
+        }
+
+        return res;
+    };
+
     var timeMs = function(val) {
         var regex = /(\d+):(\d{2}):(\d{2}),(\d{3})/;
         var parts = regex.exec(val);
@@ -77,7 +109,7 @@ var parser = (function() {
         return parts[1] * 3600000 + parts[2] * 60000 + parts[3] * 1000 + parts[4];
     };
 
-    var msTime = function(val) {
+    var msTime = function(val, webvtt) {
         var measures = [ 3600000, 60000, 1000 ]; 
         var time = [];
 
@@ -94,7 +126,7 @@ var parser = (function() {
             for (i = 0; i <= 3 - ms.length; i++) ms = '0' + ms;
         }
 
-        return time.join(':') + ',' + ms;
+        return time.join(':') + (webvtt ? '.' : ',') + ms;
     };
 
     return pItems;

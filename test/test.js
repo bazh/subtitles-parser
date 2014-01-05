@@ -3,6 +3,8 @@ var fs = require('fs');
 
 var srt = fs.readFileSync('./test/test.srt', { encoding: 'utf-8' });
 
+var webVTT = fs.readFileSync('./test/test.webvtt', { encoding: 'utf-8' });
+
 describe('subtitles-parser', function() {
 
     describe('testing SubRip part', function() {
@@ -36,6 +38,15 @@ describe('subtitles-parser', function() {
             (srt.trim() === originalData.trim()).should.be.ok;
         });
 
+        var webVTTOutput;
+        it('parser.toWebVTT() should execute without crashes', function() {
+            webVTTOutput = parser.toWebVTT(data);
+        });
+
+        it('parser.toWebVTT() should convert object to WebVTT', function() {
+            webVTTOutput.trim().should.eql(webVTT.trim());
+        });
+
         var dataMs;
         it('parser.fromSrt() should successfully convert time to ms', function() {
             dataMs = parser.fromSrt(srt, true);
@@ -48,6 +59,15 @@ describe('subtitles-parser', function() {
 
         it('parser.fromSrt() should convert object with ms back as it was before without changes', function() {
             (srt.trim() === originalDataMs.trim()).should.be.ok;
+        });
+
+        var webVTTOutputMs;
+        it('parser.toWebVTT() should execute without crashes when using ms', function() {
+            webVTTOutputMs = parser.toWebVTT(dataMs);
+        });
+
+        it('parser.toWebVTT() should convert object with ms to WebVTT', function() {
+            webVTTOutputMs.trim().should.eql(webVTT.trim());
         });
     });
 });
