@@ -9,7 +9,7 @@ NodeJS:
 
     npm install subtitle-parser
 
-or [download](https://github.com/bazh/subtitle-parser/raw/master/index.js) minified version of subtitle-parser to use module in a browser
+or [download](https://github.com/bazh/subtitles-parser/blob/master/subtitles.parser.min.js) minified version of subtitle-parser to use module in a browser
 
 
 ### Example
