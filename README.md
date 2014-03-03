@@ -7,7 +7,7 @@ Simple module written in javascript, which provides SubRip subtitles parsing met
 
 NodeJS:
 
-    npm install subtitle-parser
+    npm install subtitles-parser
 
 or [download](https://github.com/bazh/subtitles-parser/blob/master/subtitles.parser.min.js) minified version of subtitle-parser to use module in a browser
 
