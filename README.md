@@ -29,9 +29,9 @@ Let's say we have my.srt SubRip subtitles file:
 
 1. Load file into data variable
 
-```js   
+```js
 var fs = require('fs');
-var srt = fs.readFileSync('my.srt');
+var srt = fs.readFileSync('my.srt','utf8');
 
 var data = parser.fromSrt(srt);
 ```
@@ -42,7 +42,7 @@ data object will look like:
         id: '1',
         startTime: '00:00:02,000',
         endTime: '00:00:06,000',
-        text: 'Subtitle 1.1\nSubtitle 1.2' 
+        text: 'Subtitle 1.1\nSubtitle 1.2'
     },
     {
         id: '2',
@@ -63,7 +63,7 @@ then it will convert startTime and endTime properties into millisecods:
         id: '1',
         startTime: 2000,
         endTime: 6000,
-        text: 'Subtitle 1.1\nSubtitle 1.2' 
+        text: 'Subtitle 1.1\nSubtitle 1.2'
     },
     {
         id: '2',
