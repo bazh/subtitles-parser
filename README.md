@@ -31,6 +31,8 @@ Let's say we have my.srt SubRip subtitles file:
 
 ```js
 var fs = require('fs');
+var parser = require('subtitles-parser');
+
 var srt = fs.readFileSync('my.srt','utf8');
 
 var data = parser.fromSrt(srt);
