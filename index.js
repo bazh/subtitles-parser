@@ -10,7 +10,7 @@ var parser = (function() {
      *     text: `Text of subtitle`
      * }]
      *
-     * @param  {String}  data SubRip suntitles string
+     * @param  {String}  data SubRip subtitles string
      * @param  {Boolean} ms   Optional: use milliseconds for startTime and endTime
      * @return {Array}  
      */
@@ -18,7 +18,7 @@ var parser = (function() {
         var useMs = ms ? true : false;
 
         data = data.replace(/\r/g, '');
-        var regex = /(\d+)\n(\d{2}:\d{2}:\d{2},\d{3}) --> (\d{2}:\d{2}:\d{2},\d{3})/g;
+        var regex = /(\d+)\n(\d{2}:\d{2}:\d{2}[,|.]\d{3}) --> (\d{2}:\d{2}:\d{2}[,|.]\d{3})/g;
         data = data.split(regex);
         data.shift();
 
@@ -61,7 +61,7 @@ var parser = (function() {
     };
 
     var timeMs = function(val) {
-        var regex = /(\d+):(\d{2}):(\d{2}),(\d{3})/;
+        var regex = /(\d+):(\d{2}):(\d{2})[,|.](\d{3})/;
         var parts = regex.exec(val);
 
         if (parts === null) {
