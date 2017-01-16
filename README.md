@@ -53,11 +53,17 @@ data object will look like:
         text: 'Subtitle 2.1\nSubtitle 2.2'
     }]
 
-if you will pass `true` flag to `fromSrt` function:
+It's possible to pass options as second parameter:
 
 ```js
-var dataMs = parser.fromSrt(srt, true);
+var options = {
+    ms: true/false,
+    getHearingImpaerSubtitles: true/false
+}
+var dataMs = parser.fromSrt(srt, options);
 ```
+
+ms will return the milliseconds and getHearingImpaerSubtitles to true will get all subtitles. If it's not defined it will not pass the hearing impaer subtitles.
 
 then it will convert startTime and endTime properties into millisecods:
 
